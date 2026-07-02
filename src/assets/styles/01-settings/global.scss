@@ -5,20 +5,27 @@ $infinte-color: var(--infinte-color);
 $main-text-color: var(--main-text-color);
 
 :root {
-  --infinte-color: #c9c9c9;
-  --main-text-color: #231f1e;
-  --main-text-color-dark: #2b2d34;
+  --infinte-color: #2a2438;
+  --main-text-color: #f1eefc;
+  --main-text-color-dark: #ffffff;
 
-  /* current */
-  --color-primary: #5cd5c4;
-  --color-primary: #414042;
-  --color-primary-d: #272628;
-  --color-primary-l: #676668;
-  --color-primary-reverse: #ff6767;
-  --color-text: #7c8082;
-  --bg-gray: #c6c7ce1a;
-  --color-grey: #f5f7f9;
-  --color-light-grey: #eeeeee;
+  /* Gaming / cyber-purple palette */
+  --color-primary: #8b5cf6;       /* neon purple - main brand accent */
+  --color-primary-d: #6d28d9;      /* deeper purple - hover states */
+  --color-primary-l: #a78bfa;      /* lighter purple - highlights */
+  --color-primary-reverse: #22d3ee; /* electric cyan - secondary accent */
+  --color-glow: #c084fc;           /* soft glow for shadows/effects */
+
+  --color-bg: #0d0b14;             /* near-black page background */
+  --color-surface: #161222;        /* card/section background */
+  --color-surface-2: #1e1830;      /* elevated surface (headers, footers) */
+  --color-border: #322a4a;
+
+  --color-text: #b9b3cf;           /* secondary/body text on dark */
+  --bg-gray: #1e183033;
+  --color-grey: #161222;
+  --color-light-grey: #221c33;
+
   /* font-size */
   --font-sm: 0.8685714286rem;
   /* font-family: ; */
@@ -26,4 +33,18 @@ $main-text-color: var(--main-text-color);
 
   /* plugins */
   --mm-ocd-width: calc(100% - 51px);
+}
+
+/* Base dark gaming background + neon glow utility */
+body {
+  background-color: var(--color-bg);
+  color: var(--main-text-color);
+}
+
+.glow-primary {
+  box-shadow: 0 0 18px 0 rgba(139, 92, 246, 0.45);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 18px 0 rgba(34, 211, 238, 0.4);
 }
