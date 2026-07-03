@@ -1,4 +1,8 @@
 import BasePage from '../base-page';
+// Tracks how many product-card images have rendered on this page load.
+// The very first card is very likely the LCP element (top of homepage/category
+// grid), so we load it eagerly with high priority instead of lazily.
+let __renderedProductCardsCount = 0;
 class ProductCard extends HTMLElement {
   constructor(){
     super()
@@ -172,6 +176,8 @@ class ProductCard extends HTMLElement {
   }
 
   render(){
+    const isFirstCardOnPage = __renderedProductCardsCount === 0;
+    __renderedProductCardsCount++;
     this.classList.add('s-product-card-entry'); 
     this.setAttribute('id', this.product.id);
     !this.horizontal && !this.fullImage && !this.minimal? this.classList.add('s-product-card-vertical') : '';
@@ -198,7 +204,7 @@ class ProductCard extends HTMLElement {
                 : 'cover'}"
               src="${this.product?.image?.url || this.product?.thumbnail || this.placeholder || ''}"
               alt="${this.escapeHTML(this.product?.image?.alt || this.product.name)}"
-              loading="lazy"
+              ${isFirstCardOnPage ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'}
             />
             ${!this.fullImage && !this.minimal ? this.getProductBadge() : ''}
           </a>

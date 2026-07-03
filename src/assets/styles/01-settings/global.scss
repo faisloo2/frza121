@@ -76,7 +76,30 @@ body {
   box-shadow: 0 0 18px 0 rgba(34, 211, 238, 0.4);
 }
 
-/* Theme toggle button */
+/* Dark mode: remap the theme's hardcoded white/light surfaces so header,
+   footer, nav dropdowns, and generic section blocks follow the toggle too. */
+[data-theme="dark"] {
+  .bg-white,
+  .main-nav-container,
+  .top-navbar,
+  footer,
+  .s-block {
+    background-color: var(--color-surface) !important;
+    color: var(--main-text-color);
+  }
+
+  .text-gray-800,
+  .text-gray-900,
+  .text-dark {
+    color: var(--main-text-color) !important;
+  }
+
+  .border-gray-100,
+  .border-gray-200,
+  .border-gray-300 {
+    border-color: var(--color-border) !important;
+  }
+}
 .theme-toggle-btn {
   display: inline-flex;
   align-items: center;
