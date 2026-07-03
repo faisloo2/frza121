@@ -58,6 +58,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{ theme.settings.set('placeholder', 'images/placeholder.png') }}
 
+    {# Performance: connect early to CDN/font/asset origins to cut PageSpeed connection latency #}
+    <link rel="preconnect" href="{{ theme.font.path|cdn }}" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.assets.salla.network">
+    <link rel="preconnect" href="https://cdn.salla.sa" crossorigin>
+
+    {# Set dark/light theme before first paint to avoid flash-of-wrong-theme (also helps CLS/perf score) #}
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('site-theme');
+          var mode = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', mode);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+
     <script defer data-cfasync="false" crossorigin="anonymous" src="{{ 'product-card.js'|asset }}"></script>
     <script defer src="{{ 'main-menu.js'|asset }}"></script>
     {% if theme.settings.get('enable_add_product_toast', true) %}
@@ -127,5 +145,17 @@
     <salla-scopes selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
 {% endif %}
 {% block scripts %}{% endblock %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('theme-toggle-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('site-theme', next); } catch (e) {}
+    });
+  });
+</script>
 </body>
 </html>
