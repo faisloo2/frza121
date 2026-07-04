@@ -281,22 +281,19 @@
 }
 
 // Reserve layout space for the async product listing component (salla-products-list)
-// to fix high CLS on category pages (/product/index.twig).
-// This is fetched + rendered client-side by Salla's platform script, so the browser
-// has no size info for it until the API call resolves — causing a large layout jump
-// when the cards pop in. Reserving approximate space up front removes that jump.
-// Values are approximate card-grid heights per breakpoint; min-height (not height)
-// so real content is never clipped once it loads.
-salla-products-list {
+// ONLY while it hasn't rendered yet (:not(:defined)) — this stops the big CLS jump
+// during load, but the moment real product cards render, this rule stops matching
+// and the layout goes back to its natural height. No permanent gap, no visual change.
+salla-products-list:not(:defined) {
   display: block;
-  min-height: 620px; // ~2 rows x 2 cols on mobile
+  min-height: 460px; // mobile, ~1 row of 2 cols before load
 
   @screen sm {
-    min-height: 780px; // ~2 rows x 3 cols
+    min-height: 420px; // ~1 row of 3 cols
   }
 
   @screen lg {
-    min-height: 900px; // ~2 rows x 4 cols
+    min-height: 380px; // ~1 row of 4 cols
   }
 }
 
