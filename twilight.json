@@ -26,10 +26,21 @@
     ],
     "settings": [
         {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "الوضع الداكن",
+            "description": null,
+            "id": "footer_is_dark",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
             "id": "squar_photo_bg_image_size",
             "type": "items",
             "format": "dropdown-list",
-            "label": "طريقة عرض الصور في قسم قائمة عناصر ",
+            "label": "طريقة عرض الصور في قسم قائمة عناصر",
             "description": null,
             "labelHTML": null,
             "icon": "sicon-list",
@@ -81,7 +92,7 @@
             "type": "static",
             "format": "title",
             "id": "static-label2",
-            "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات أعلى الصفحة</h6></div>",
+            "value": "<div class='rounded-lg' ><h6 > خيارات أعلى الصفحة</h6></div>",
             "variant": "h6"
         },
         {
@@ -137,19 +148,8 @@
             "type": "static",
             "format": "title",
             "id": "static-label4",
-            "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات أسفل الصفحة</h6></div>",
+            "value": "<div class='rounded-lg' ><h6 > خيارات أسفل الصفحة</h6></div>",
             "variant": "h6"
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "الوضع الداكن",
-            "description": null,
-            "id": "footer_is_dark",
-            "format": "switch",
-            "required": false,
-            "value": true,
-            "selected": false
         },
         {
             "type": "static",
@@ -160,7 +160,7 @@
             "type": "static",
             "format": "title",
             "id": "static-label6",
-            "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات صفحة المنتج</h6></div>",
+            "value": "<div class='rounded-lg' ><h6 > خيارات صفحة المنتج</h6></div>",
             "variant": "h6"
         },
         {
